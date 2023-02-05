@@ -1,0 +1,7 @@
+@mixin color-gradient-on-text() {
+  color: transparent;
+  opacity: 0.8;
+  background-image: linear-gradient(90deg, #ff0099, #493240, #ff0099);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
