@@ -4,13 +4,13 @@ import {
   ref,
   set,
   push,
+  get,
 } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 import {
   getAuth,
   signInAnonymously,
 } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
 import { Member } from "./js/scrollerModule.js";
-import { initLocalStorage, updateLocalStorage } from "./js/functionsModule.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDrZrZKKHfsd0vqQdxtTxj6BCBrtsHqxdE",
@@ -36,17 +36,18 @@ const new_member = new Member();
 signInAnonymously(auth)
   .then(() => {
     console.log("signed in...");
-    const new_scroller = initLocalStorage(new_member.getAllProps());
 
-    if (new_scroller) {
-      const scroller_id = auth.currentUser.uid;
-      new_member.scroller_id = scroller_id;
-      set(ref(database, "users/" + scroller_id), new_member.getAllProps());
-      updateLocalStorage(new_member.getAllProps());
-    } else {
-      const scroller = JSON.parse(localStorage.getItem("new-scroller"));
-      new_member.init(scroller);
-    }
+    new_member.scroller_id = auth.currentUser.uid;
+    const dbRef = ref(getDatabase());
+
+    get(child(dbRef, `users/${new_member.scroller_id}`)).then((snapshot) => {
+      if (!snapshot.exists()) {
+        set(
+          ref(database, "users/" + new_member.scroller_id),
+          new_member.getAllProps()
+        );
+      }
+    });
   })
   .catch((error) => {
     const errorCode = error.code;
@@ -61,7 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
       ref(database, `users/${new_member.scroller_id}/timestamps`),
       timestamp
     );
-    updateLocalStorage(new_member.scroller);
   });
 
   window.onscroll = function () {
