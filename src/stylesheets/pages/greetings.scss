@@ -41,7 +41,6 @@
     /** 576px oder schmaler */
     @media (max-width: $breakpoint-xs) {
       font-size: 1.75rem;
-      padding-left: 0;
       animation: greetings-animation-sm 3.5s ease-in-out 0s 1;
     }
 
@@ -77,7 +76,7 @@
       rgba(251, 215, 134, 0.8) 0%,
       rgba(247, 121, 125, 0.8) 100%
     );
-    padding: 1.5em;
+    margin-bottom: 3rem;
     width: 80vh;
     height: 80vh;
     border-radius: 50%;
@@ -89,7 +88,7 @@
 
     /** 1200px oder schmaler */
     @media (max-width: $breakpoint-lg) {
-      margin-bottom: 7.5%;
+      margin-bottom: 7rem;
     }
 
     /** 992px oder schmaler */
@@ -97,6 +96,7 @@
       width: 75vw;
       height: 75vw;
       align-self: center;
+      margin-bottom: 0;
     }
 
     /** 768px oder schmaler */
