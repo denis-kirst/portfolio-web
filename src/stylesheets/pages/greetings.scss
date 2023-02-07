@@ -20,57 +20,8 @@
     background: url("../../../assets/img/sky2.jpg") fixed no-repeat center;
     background-size: cover;
   }
-  &.greetings--header {
-    padding-left: 10%;
-    font-size: 3.5rem;
-    line-height: 2em;
-    letter-spacing: 1rem;
-    white-space: nowrap;
-    font-weight: 500;
 
-    @include color-gradient-on-text;
-    animation: greetings-animation 3.5s ease-in-out 0s 1;
-
-    /** 992px oder schmaler */
-    @media (max-width: $breakpoint-md) {
-      font-size: 3.75rem;
-      padding-left: 5%;
-      letter-spacing: 0.5rem;
-      animation: greetings-animation 3.5s ease-in-out 0s 1;
-    }
-    /** 576px oder schmaler */
-    @media (max-width: $breakpoint-xs) {
-      font-size: 1.75rem;
-      animation: greetings-animation-sm 3.5s ease-in-out 0s 1;
-    }
-
-    @keyframes greetings-animation {
-      0% {
-        opacity: 0;
-        letter-spacing: 2rem;
-        font-weight: 300;
-      }
-      100% {
-        opacity: 0.8;
-        letter-spacing: 1rem;
-        font-weight: 500;
-      }
-    }
-
-    @keyframes greetings-animation-sm {
-      0% {
-        opacity: 0;
-        letter-spacing: 1rem;
-        font-weight: 300;
-      }
-      100% {
-        opacity: 0.8;
-        letter-spacing: 0.5rem;
-        font-weight: 500;
-      }
-    }
-  }
-  &.greetings--sun {
+  .greetings__sun-element {
     background: radial-gradient(
       circle,
       rgba(251, 215, 134, 0.8) 0%,
@@ -104,8 +55,59 @@
       width: 80vw;
       height: 80vw;
     }
+
+    .greetings__sun-element__header {
+      padding-left: 10%;
+      font-size: 3.5rem;
+      line-height: 2em;
+      letter-spacing: 1rem;
+      white-space: nowrap;
+      font-weight: 500;
+
+      @include color-gradient-on-text;
+      animation: greetings-animation 3.5s ease-in-out 0s 1;
+
+      /** 992px oder schmaler */
+      @media (max-width: $breakpoint-md) {
+        font-size: 3.75rem;
+        padding-left: 5%;
+        letter-spacing: 0.5rem;
+        animation: greetings-animation 3.5s ease-in-out 0s 1;
+      }
+      /** 576px oder schmaler */
+      @media (max-width: $breakpoint-xs) {
+        font-size: 1.75rem;
+        animation: greetings-animation-sm 3.5s ease-in-out 0s 1;
+      }
+
+      @keyframes greetings-animation {
+        0% {
+          opacity: 0;
+          letter-spacing: 2rem;
+          font-weight: 300;
+        }
+        100% {
+          opacity: 0.8;
+          letter-spacing: 1rem;
+          font-weight: 500;
+        }
+      }
+
+      @keyframes greetings-animation-sm {
+        0% {
+          opacity: 0;
+          letter-spacing: 1rem;
+          font-weight: 300;
+        }
+        100% {
+          opacity: 0.8;
+          letter-spacing: 0.5rem;
+          font-weight: 500;
+        }
+      }
+    }
   }
-  &.cloud {
+  .cloud {
     position: absolute;
     z-index: 1;
     opacity: 0.5;
