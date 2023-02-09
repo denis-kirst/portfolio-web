@@ -2,7 +2,9 @@
 @use "../base/variables.scss" as *;
 
 .greetings {
-  &.greetings--mountains {
+  display: flex;
+  justify-content: center;
+  &--mountains {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -11,7 +13,7 @@
     background: url("../assets/img/mountains.png") fixed no-repeat center;
     background-size: cover;
   }
-  &.greetings--background-sky::before {
+  &--background-sky::before {
     content: "";
     position: absolute;
     width: 100%;
@@ -56,7 +58,7 @@
       height: 80vw;
     }
 
-    .greetings__sun-element__header {
+    .greetings__header {
       padding-left: 10%;
       font-size: 3.5rem;
       line-height: 2em;
