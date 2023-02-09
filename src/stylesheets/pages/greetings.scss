@@ -114,6 +114,7 @@
     z-index: 1;
     opacity: 0.5;
     width: 10%;
+    fill: #cccccc;
     /** 992px oder schmaler */
     @media (max-width: $breakpoint-md) {
       width: 17.5%;
