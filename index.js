@@ -11,6 +11,7 @@ import {
   signInAnonymously,
 } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
 import { Member } from "./js/scrollerModule.js";
+import { updateProgress } from "./js/progress-bar.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDrZrZKKHfsd0vqQdxtTxj6BCBrtsHqxdE",
@@ -55,7 +56,9 @@ signInAnonymously(auth)
   });
 
 document.addEventListener("DOMContentLoaded", () => {
-  let current = document.querySelector("a.nav-link.js-scroll-trigger.active");
+  const ACTIVE_ELEM_SELECTOR = "a.active";
+  scrollHandler();
+  let current = document.querySelector(ACTIVE_ELEM_SELECTOR);
 
   new_member.on("add-timestamp", (timestamp) => {
     push(
@@ -65,12 +68,65 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   window.onscroll = function () {
-    const check_section = document.querySelector(
-      "a.nav-link.js-scroll-trigger.active"
-    );
+    scrollHandler();
+    updateProgress();
+    const check_section = document.querySelector(ACTIVE_ELEM_SELECTOR);
     if (check_section.innerHTML !== current.innerHTML) {
       current = check_section;
       new_member.addTimestamp(current.innerHTML);
     }
   };
 });
+
+function scrollHandler() {
+  const EXPANDED_CLASS = "navbar--expanded";
+  const nav_elem = document.getElementById("navbar-elem");
+  const ul_elem = document.getElementById("navbar-list-items");
+  const sections = document.querySelectorAll("section");
+  const positions = calculatePositions(sections);
+  const distances = calculateDistance(positions);
+  const CLASS_ACTIVE = "active";
+
+  const MIN = Math.min(...distances.filter((num) => num > 0));
+
+  for (const i in distances) {
+    if (window.scrollY > 80) {
+      nav_elem.classList.add(EXPANDED_CLASS);
+    } else {
+      nav_elem.classList.remove(EXPANDED_CLASS);
+    }
+    const current_elem = ul_elem.children[i].firstChild;
+    if (distances[i] === MIN && !current_elem.classList.contains("active")) {
+      current_elem.classList.add(CLASS_ACTIVE);
+    }
+    if (distances[i] !== MIN && current_elem.classList.contains("active")) {
+      current_elem.classList.remove(CLASS_ACTIVE);
+    }
+  }
+}
+
+/**
+ * @param {Array<Number>} positions
+ * @returns {Array<Number>}
+ */
+function calculateDistance(positions) {
+  const navbar_elem = document.querySelector("nav.navbar");
+  const SCROLL_WAY = window.scrollY - navbar_elem.scrollHeight;
+  const distances = [];
+  for (const position of positions) {
+    distances.push(position - SCROLL_WAY);
+  }
+  return distances;
+}
+
+/**
+ * @param {NodeListOf<HTMLElement>} sections
+ * @returns {Array<Number>}
+ */
+function calculatePositions(sections) {
+  const all_positions = [];
+  for (const section of sections) {
+    all_positions.push(section.offsetTop + section.offsetHeight);
+  }
+  return all_positions;
+}
