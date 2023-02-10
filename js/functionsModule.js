@@ -21,6 +21,7 @@ export function scrollHandler() {
   const EXPANDED_CLASS = "navbar--expanded";
   const nav_elem = document.getElementById("navbar-elem");
   const ul_elem = document.getElementById("navbar-list-items");
+  const li_elems = document.querySelectorAll("li.navbar__list-item");
   const sections = document.querySelectorAll("section");
   const positions = calculatePositions(sections);
   const distances = calculateDistance(positions);
@@ -31,7 +32,13 @@ export function scrollHandler() {
   for (const i in distances) {
     if (window.scrollY > 80) {
       nav_elem.classList.add(EXPANDED_CLASS);
+      for (const li of li_elems) {
+        li.style.opacity = "0.8";
+      }
     } else {
+      for (const li of li_elems) {
+        li.style.opacity = "0";
+      }
       nav_elem.classList.remove(EXPANDED_CLASS);
     }
     const current_elem = ul_elem.children[i].firstChild;

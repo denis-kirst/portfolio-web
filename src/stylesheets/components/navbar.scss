@@ -33,6 +33,8 @@
     margin: 0;
     padding: 0.5rem 0 0 0;
     .navbar__list-item {
+      opacity: 0;
+      transition: opacity 1.25s;
       .navbar__link {
         font-family: "Quicksand";
         font-size: 2rem;
