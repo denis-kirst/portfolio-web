@@ -172,7 +172,6 @@
         }
       }
     }
-
     &.cloud-3 {
       top: 35%;
       left: -20%;
@@ -197,7 +196,6 @@
         }
       }
     }
-
     &.cloud-4 {
       top: 3%;
       right: -20%;
@@ -222,7 +220,6 @@
         }
       }
     }
-
     &.cloud-5 {
       top: 19%;
       right: -20%;
@@ -247,7 +244,6 @@
         }
       }
     }
-
     &.cloud-6 {
       width: 7%;
       top: 35%;
@@ -272,6 +268,18 @@
           top: 37%;
         }
       }
+    }
+  }
+
+  .header__arrow--position {
+    position: absolute;
+    width: 5rem;
+    bottom: 2rem;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    .header__arrow {
+      fill: #cccccc;
     }
   }
 }

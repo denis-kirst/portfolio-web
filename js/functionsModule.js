@@ -7,7 +7,6 @@ export function updateProgress() {
   );
 
   const progress_elem = document.getElementById("progress-bar");
-  const navbar_elem = document.getElementById("navbar-elem");
 
   const widthValue = progress < 3 ? 0 : progress > 97 ? 94 : progress;
 
