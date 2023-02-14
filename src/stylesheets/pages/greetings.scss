@@ -73,12 +73,13 @@
       @media (max-width: $breakpoint-md) {
         font-size: 3.75rem;
         padding-left: 5%;
-        letter-spacing: 0.5rem;
+        letter-spacing: 1rem;
         animation: greetings-animation 3.5s ease-in-out 0s 1;
       }
       /** 576px oder schmaler */
       @media (max-width: $breakpoint-xs) {
         font-size: 1.75rem;
+        letter-spacing: 0.5rem;
         animation: greetings-animation-sm 3.5s ease-in-out 0s 1;
       }
       @keyframes greetings-animation {
