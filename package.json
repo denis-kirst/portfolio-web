@@ -10,7 +10,6 @@
   "author": "Tyler Durden",
   "license": "ISC",
   "dependencies": {
-    "bootstrap": "^5.2.3",
     "firebase": "^9.15.0"
   }
 }
