@@ -1,5 +1,5 @@
 const EXPANDED_CLASS = "navbar--expanded";
-const MD_SCREEN_WIDTH = 768;
+const SM_SCREEN_WIDTH = 768;
 const CLASS_ACTIVE = "active";
 
 const nav_elem = document.getElementById("navbar-elem");
@@ -70,7 +70,7 @@ function calculatePositions(sections) {
 }
 
 export function expandNavbar() {
-  if (body_elem.offsetWidth <= MD_SCREEN_WIDTH) {
+  if (body_elem.offsetWidth <= SM_SCREEN_WIDTH) {
     if (nav_elem.classList.contains(EXPANDED_CLASS)) {
       nav_elem.classList.remove(EXPANDED_CLASS);
       ul_elem.classList.remove(EXPANDED);
@@ -84,9 +84,10 @@ export function expandNavbar() {
 }
 
 function navbarExpandHandler() {
-  if (body_elem.offsetWidth > MD_SCREEN_WIDTH) {
+  if (body_elem.offsetWidth > SM_SCREEN_WIDTH) {
     if (window.scrollY > 80) {
       nav_elem.classList.add(EXPANDED_CLASS);
+      ul_elem.classList.add(EXPANDED);
       for (const li of li_elems) {
         li.style.opacity = "0.8";
       }
@@ -103,7 +104,7 @@ export function widthHandler() {
   for (const li of li_elems) {
     li.style.opacity = "0.8";
   }
-  if (body_elem.offsetWidth > MD_SCREEN_WIDTH) {
+  if (body_elem.offsetWidth > SM_SCREEN_WIDTH && window.scrollY > 80) {
     nav_elem.style.top = "0";
     ul_elem.classList.add(EXPANDED);
     nav_elem.classList.add(EXPANDED_CLASS);

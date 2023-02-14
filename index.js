@@ -61,10 +61,11 @@ signInAnonymously(auth)
   });
 
 document.addEventListener("DOMContentLoaded", () => {
+  init();
   const ACTIVE_ELEM_SELECTOR = "a.active";
 
   const navbar_expand_elem = document.getElementById("navbar-expand-button");
-  scrollHandler();
+
   let current = document.querySelector(ACTIVE_ELEM_SELECTOR);
 
   window.addEventListener("resize", () => {
@@ -92,3 +93,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 });
+
+function init() {
+  scrollHandler();
+  widthHandler();
+}
