@@ -1,6 +1,7 @@
 const EXPANDED_CLASS = "navbar--expanded";
 const SM_SCREEN_WIDTH = 768;
 const CLASS_ACTIVE = "active";
+const TRANSFORMED_CLASS = "close--transformed";
 
 const nav_elem = document.getElementById("navbar-elem");
 const li_elems = document.querySelectorAll("li.navbar__list-item");
@@ -8,6 +9,7 @@ const progress_elem = document.getElementById("progress-bar");
 const ul_elem = document.getElementById("navbar-list-items");
 const sections = document.querySelectorAll("section");
 const body_elem = document.getElementById("page-top");
+const icon_elem = document.getElementById("close-icon");
 const EXPANDED = "navbar__list--expanded";
 
 /**
@@ -112,10 +114,12 @@ function hideNavbar() {
   ul_elem.classList.remove(EXPANDED);
   nav_elem.classList.remove(EXPANDED_CLASS);
   nav_elem.style.top = `-${nav_elem.offsetHeight}px`;
+  icon_elem.classList.add(TRANSFORMED_CLASS);
 }
 
 function expandNavbar() {
   ul_elem.classList.add(EXPANDED);
   nav_elem.classList.add(EXPANDED_CLASS);
   nav_elem.style.top = "0";
+  icon_elem.classList.remove(TRANSFORMED_CLASS);
 }
