@@ -81,7 +81,6 @@
         font-size: 1.75rem;
         animation: greetings-animation-sm 3.5s ease-in-out 0s 1;
       }
-
       @keyframes greetings-animation {
         0% {
           opacity: 0;
@@ -94,7 +93,6 @@
           font-weight: 500;
         }
       }
-
       @keyframes greetings-animation-sm {
         0% {
           opacity: 0;
@@ -161,7 +159,6 @@
           left: 120%;
         }
       }
-
       @keyframes floating-2-animation {
         0%,
         100% {
@@ -185,7 +182,6 @@
           left: 120%;
         }
       }
-
       @keyframes floating-3-animation {
         0%,
         100% {
@@ -209,7 +205,6 @@
           right: 120%;
         }
       }
-
       @keyframes floating-4-animation {
         0%,
         100% {
@@ -270,7 +265,6 @@
       }
     }
   }
-
   .header__arrow--position {
     position: absolute;
     width: 5rem;
