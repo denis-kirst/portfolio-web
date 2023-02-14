@@ -1,16 +1,39 @@
 @use "../base/variables.scss" as *;
+.navbar-wrapper {
+  position: fixed;
+  right: 7.5%;
+  top: 2rem;
+  width: 5rem;
+  height: 5rem;
+  z-index: 10;
+  .navbar__expand--button {
+    fill: rgba(251, 215, 134, 0.8);
+    width: 5em;
+    display: none;
+    @media (max-width: $breakpoint-sm) {
+      display: block;
+    }
+  }
+}
 
 .navbar {
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 5;
   padding-top: 1rem;
+  @media (max-width: $breakpoint-sm) {
+    padding-top: 1rem;
+  }
   transition: padding 1s ease-in-out, background-color 1s ease-in-out;
   &.navbar--expanded {
     padding: 3rem 0;
     background-color: rgba(39, 72, 85, 0.8);
+    @media (max-width: $breakpoint-sm) {
+      padding: 1rem 0 1rem 0;
+      transition: background-color 1s ease-in-out, top 1.5s ease-in-out;
+    }
   }
   #progress-bar {
     height: 60%;
@@ -24,17 +47,30 @@
     border-radius: 1rem;
     transition: width 1s ease-in-out;
     z-index: -10;
+    @media (max-width: $breakpoint-sm) {
+      display: none;
+    }
   }
   .navbar__list {
     display: flex;
     width: 100%;
     justify-content: space-around;
+    align-items: center;
     list-style: none;
     margin: 0;
-    padding: 0.5rem 0 0 0;
+    position: relative;
+    @media (max-width: $breakpoint-sm) {
+      &--expanded {
+        display: block;
+      }
+    }
     .navbar__list-item {
       opacity: 0;
       transition: opacity 1.25s;
+      display: flex;
+      @media (max-width: $breakpoint-sm) {
+        opacity: 0.8;
+      }
       .navbar__link {
         font-family: "Quicksand";
         font-size: 2rem;
@@ -43,6 +79,9 @@
         color: #e0e0e0;
         opacity: 0.8;
         padding-top: 1rem;
+        @media (max-width: $breakpoint-sm) {
+          padding: 0.5rem 0.5rem 0.5rem 1rem;
+        }
         &::after {
           content: "";
           width: 0;

@@ -1,3 +1,15 @@
+const EXPANDED_CLASS = "navbar--expanded";
+const MD_SCREEN_WIDTH = 768;
+const CLASS_ACTIVE = "active";
+
+const nav_elem = document.getElementById("navbar-elem");
+const li_elems = document.querySelectorAll("li.navbar__list-item");
+const progress_elem = document.getElementById("progress-bar");
+const ul_elem = document.getElementById("navbar-list-items");
+const sections = document.querySelectorAll("section");
+const body_elem = document.getElementById("page-top");
+const EXPANDED = "navbar__list--expanded";
+
 /**
  * Calculate and update progress bar
  */
@@ -6,48 +18,30 @@ export function updateProgress() {
     (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100
   );
 
-  const progress_elem = document.getElementById("progress-bar");
-
   const widthValue = progress < 3 ? 0 : progress > 97 ? 94 : progress;
 
   progress_elem.style.width = `${widthValue}%`;
 }
 
-/**
- * scrollHandler for navigation
- */
 export function scrollHandler() {
-  const EXPANDED_CLASS = "navbar--expanded";
-  const nav_elem = document.getElementById("navbar-elem");
-  const ul_elem = document.getElementById("navbar-list-items");
-  const li_elems = document.querySelectorAll("li.navbar__list-item");
-  const sections = document.querySelectorAll("section");
   const positions = calculatePositions(sections);
   const distances = calculateDistance(positions);
-  const CLASS_ACTIVE = "active";
 
   const MIN = Math.min(...distances.filter((num) => num > 0));
 
   for (const i in distances) {
-    if (window.scrollY > 80) {
-      nav_elem.classList.add(EXPANDED_CLASS);
-      for (const li of li_elems) {
-        li.style.opacity = "0.8";
-      }
-    } else {
-      for (const li of li_elems) {
-        li.style.opacity = "0";
-      }
-      nav_elem.classList.remove(EXPANDED_CLASS);
-    }
     const current_elem = ul_elem.children[i].firstChild;
-    if (distances[i] === MIN && !current_elem.classList.contains("active")) {
+    if (
+      distances[i] === MIN &&
+      !current_elem.classList.contains(CLASS_ACTIVE)
+    ) {
       current_elem.classList.add(CLASS_ACTIVE);
     }
-    if (distances[i] !== MIN && current_elem.classList.contains("active")) {
+    if (distances[i] !== MIN && current_elem.classList.contains(CLASS_ACTIVE)) {
       current_elem.classList.remove(CLASS_ACTIVE);
     }
   }
+  navbarExpandHandler();
 }
 
 /**
@@ -55,8 +49,7 @@ export function scrollHandler() {
  * @returns {Array<Number>}
  */
 function calculateDistance(positions) {
-  const navbar_elem = document.querySelector("nav.navbar");
-  const SCROLL_WAY = window.scrollY - navbar_elem.scrollHeight;
+  const SCROLL_WAY = window.scrollY - nav_elem.scrollHeight;
   const distances = [];
   for (const position of positions) {
     distances.push(position - SCROLL_WAY);
@@ -74,4 +67,49 @@ function calculatePositions(sections) {
     all_positions.push(section.offsetTop + section.offsetHeight);
   }
   return all_positions;
+}
+
+export function expandNavbar() {
+  if (body_elem.offsetWidth <= MD_SCREEN_WIDTH) {
+    if (nav_elem.classList.contains(EXPANDED_CLASS)) {
+      nav_elem.classList.remove(EXPANDED_CLASS);
+      ul_elem.classList.remove(EXPANDED);
+      nav_elem.style.top = `-${nav_elem.offsetHeight}px`;
+    } else {
+      nav_elem.classList.add(EXPANDED_CLASS);
+      ul_elem.classList.add(EXPANDED);
+      nav_elem.style.top = "0";
+    }
+  }
+}
+
+function navbarExpandHandler() {
+  if (body_elem.offsetWidth > MD_SCREEN_WIDTH) {
+    if (window.scrollY > 80) {
+      nav_elem.classList.add(EXPANDED_CLASS);
+      for (const li of li_elems) {
+        li.style.opacity = "0.8";
+      }
+    } else {
+      for (const li of li_elems) {
+        li.style.opacity = "0";
+      }
+      nav_elem.classList.remove(EXPANDED_CLASS);
+    }
+  }
+}
+
+export function widthHandler() {
+  for (const li of li_elems) {
+    li.style.opacity = "0.8";
+  }
+  if (body_elem.offsetWidth > MD_SCREEN_WIDTH) {
+    nav_elem.style.top = "0";
+    ul_elem.classList.add(EXPANDED);
+    nav_elem.classList.add(EXPANDED_CLASS);
+  } else {
+    nav_elem.style.top = `-${nav_elem.offsetHeight}px`;
+    ul_elem.classList.remove(EXPANDED);
+    nav_elem.classList.remove(EXPANDED_CLASS);
+  }
 }

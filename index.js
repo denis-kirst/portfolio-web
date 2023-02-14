@@ -11,7 +11,12 @@ import {
   signInAnonymously,
 } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
 import { Member } from "./js/scrollerModule.js";
-import { updateProgress, scrollHandler } from "./js/functionsModule.js";
+import {
+  updateProgress,
+  scrollHandler,
+  expandNavbar,
+  widthHandler,
+} from "./js/functionsModule.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDrZrZKKHfsd0vqQdxtTxj6BCBrtsHqxdE",
@@ -57,8 +62,18 @@ signInAnonymously(auth)
 
 document.addEventListener("DOMContentLoaded", () => {
   const ACTIVE_ELEM_SELECTOR = "a.active";
+
+  const navbar_expand_elem = document.getElementById("navbar-expand-button");
   scrollHandler();
   let current = document.querySelector(ACTIVE_ELEM_SELECTOR);
+
+  window.addEventListener("resize", () => {
+    widthHandler();
+  });
+
+  navbar_expand_elem.addEventListener("click", () => {
+    expandNavbar();
+  });
 
   new_member.on("add-timestamp", (timestamp) => {
     push(
