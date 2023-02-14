@@ -41,7 +41,7 @@ export function scrollHandler() {
       current_elem.classList.remove(CLASS_ACTIVE);
     }
   }
-  navbarExpandHandler();
+  navbarExpandOnScrollHandler();
 }
 
 /**
@@ -69,25 +69,20 @@ function calculatePositions(sections) {
   return all_positions;
 }
 
-export function expandNavbar() {
+export function expandNavbarOnClick() {
   if (body_elem.offsetWidth <= SM_SCREEN_WIDTH) {
     if (nav_elem.classList.contains(EXPANDED_CLASS)) {
-      nav_elem.classList.remove(EXPANDED_CLASS);
-      ul_elem.classList.remove(EXPANDED);
-      nav_elem.style.top = `-${nav_elem.offsetHeight}px`;
+      hideNavbar();
     } else {
-      nav_elem.classList.add(EXPANDED_CLASS);
-      ul_elem.classList.add(EXPANDED);
-      nav_elem.style.top = "0";
+      expandNavbar();
     }
   }
 }
 
-function navbarExpandHandler() {
+function navbarExpandOnScrollHandler() {
   if (body_elem.offsetWidth > SM_SCREEN_WIDTH) {
     if (window.scrollY > 80) {
-      nav_elem.classList.add(EXPANDED_CLASS);
-      ul_elem.classList.add(EXPANDED);
+      expandNavbar();
       for (const li of li_elems) {
         li.style.opacity = "0.8";
       }
@@ -97,6 +92,8 @@ function navbarExpandHandler() {
       }
       nav_elem.classList.remove(EXPANDED_CLASS);
     }
+  } else {
+    hideNavbar();
   }
 }
 
@@ -105,12 +102,20 @@ export function widthHandler() {
     li.style.opacity = "0.8";
   }
   if (body_elem.offsetWidth > SM_SCREEN_WIDTH && window.scrollY > 80) {
-    nav_elem.style.top = "0";
-    ul_elem.classList.add(EXPANDED);
-    nav_elem.classList.add(EXPANDED_CLASS);
+    expandNavbar();
   } else {
-    nav_elem.style.top = `-${nav_elem.offsetHeight}px`;
-    ul_elem.classList.remove(EXPANDED);
-    nav_elem.classList.remove(EXPANDED_CLASS);
+    hideNavbar();
   }
+}
+
+function hideNavbar() {
+  ul_elem.classList.remove(EXPANDED);
+  nav_elem.classList.remove(EXPANDED_CLASS);
+  nav_elem.style.top = `-${nav_elem.offsetHeight}px`;
+}
+
+function expandNavbar() {
+  ul_elem.classList.add(EXPANDED);
+  nav_elem.classList.add(EXPANDED_CLASS);
+  nav_elem.style.top = "0";
 }

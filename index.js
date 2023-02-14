@@ -14,7 +14,7 @@ import { Member } from "./js/scrollerModule.js";
 import {
   updateProgress,
   scrollHandler,
-  expandNavbar,
+  expandNavbarOnClick,
   widthHandler,
 } from "./js/functionsModule.js";
 
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   navbar_expand_elem.addEventListener("click", () => {
-    expandNavbar();
+    expandNavbarOnClick();
   });
 
   new_member.on("add-timestamp", (timestamp) => {
