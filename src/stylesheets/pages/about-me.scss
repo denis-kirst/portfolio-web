@@ -1,0 +1,81 @@
+@use "../abstracts/mixins.scss" as *;
+@use "../base/variables.scss" as *;
+
+.about-me {
+  @include vw-100-vh-100;
+  .about-me__text-container {
+    width: 60%;
+    padding-left: 1.5rem;
+    @media (max-width: $breakpoint-sm) {
+      width: 75%;
+      margin: 1rem auto;
+    }
+    @media (max-width: $breakpoint-xs) {
+      margin: 0.25rem auto;
+    }
+    .about-me__header {
+      font-size: 4rem;
+      @include color-gradient-on-text;
+      @media (max-width: $breakpoint-sm) {
+        font-size: 5rem;
+        text-align: center;
+      }
+      @media (max-width: $breakpoint-xs) {
+        font-size: 3.75rem;
+      }
+    }
+    .about-me__list {
+      padding-left: 0;
+      margin-left: 2rem;
+      list-style: none;
+      @media (max-width: $breakpoint-sm) {
+        margin-left: 0;
+      }
+      .about-me__list-item {
+        font-size: 2rem;
+        position: relative;
+        &::before {
+          content: "";
+          position: absolute;
+          top: 1.2em;
+          left: -30px;
+          margin-top: -0.9em;
+          background: rgba(251, 215, 134, 0.8);
+          height: 12px;
+          width: 12px;
+          border-radius: 50%;
+        }
+        @media (max-width: $breakpoint-lg) {
+          font-size: 1.75rem;
+        }
+        @media (max-width: $breakpoint-md) {
+          font-size: 1.5rem;
+        }
+        @media (max-width: $breakpoint-sm) {
+          padding-left: 1rem;
+        }
+        @media (max-width: $breakpoint-xs) {
+          font-size: 1.25rem;
+          padding-left: 0.5rem;
+        }
+      }
+    }
+  }
+}
+.about-me__image-container {
+  width: 40%;
+  padding-right: 1.5rem;
+  @media (max-width: $breakpoint-sm) {
+    margin: 3rem;
+    padding: 4rem;
+    width: 100%;
+  }
+  @media (max-width: $breakpoint-xs) {
+    margin: 0.5rem;
+  }
+
+  .about-me__img {
+    max-width: 100%;
+    border-radius: 0.75rem;
+  }
+}
