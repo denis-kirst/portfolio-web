@@ -5,8 +5,7 @@
   display: flex;
   justify-content: center;
   &--mountains {
-    width: 100vw;
-    height: 100vh;
+    @include vw-100-vh-100;
     overflow: hidden;
     padding: 0;
     position: relative;
