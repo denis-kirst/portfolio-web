@@ -269,12 +269,25 @@
   .header__arrow--position {
     position: absolute;
     width: 5rem;
-    bottom: 2rem;
+    bottom: 9.5%;
     right: 0;
     left: 0;
     margin: 0 auto;
+    animation: move-arrow 1.25s ease-in-out 2.5s;
+    @keyframes move-arrow {
+      0%,
+      100% {
+        bottom: 9.5%;
+      }
+      50% {
+        bottom: 10.5%;
+      }
+    }
     .header__arrow {
-      fill: #cccccc;
+      fill: rgba(224, 224, 224, 0.6);
+      &:hover {
+        fill: rgba(251, 215, 134, 0.6);
+      }
     }
   }
 }
