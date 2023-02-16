@@ -7,24 +7,22 @@
         <meta name="author" content="" />
         <title>D.K.- Portfolio</title>
         <link rel="icon" type="image/x-icon" href="assets/img/fav.png" />
-        
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
 
         <!-- real beauty -->
-        <link href="./build/main.css" rel="stylesheet" type="text/css">
-       <!-- Parallax-->
-       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-       <script src="./parallax/parallax.min.js"></script>
-       <script type="module" src="./index.js"></script>
+        <link href="./build/main.css" rel="stylesheet" type="text/css" />
+
+        <!-- Parallax-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="./parallax/parallax.min.js"></script>
+        <script type="module" src="./index.js"></script>
     </head>
     <body id="page-top" class="wrapper">
         <!-- Navigation-->                 
         <nav id="navbar-elem" class="navbar">
-            <div class="container-navbar">
+            <div class="container">
                 <ul id="navbar-list-items" class="navbar__list">
                     <li class="navbar__list-item"><a class="navbar__link js-scroll-trigger" href="#greetings">greetings</a></li>
-                    <li class="navbar__list-item"><a class="navbar__link js-scroll-trigger" href="#portfolio">portfolio</a></li>
+                    <li class="navbar__list-item"><a class="navbar__link js-scroll-trigger" href="#about-me">about me</a></li>
                     <li class="navbar__list-item"><a class="navbar__link js-scroll-trigger" href="#about">über mich</a></li>
                     <li class="navbar__list-item"><a class="navbar__link js-scroll-trigger" href="#skills">skills</a></li>
                     <li class="navbar__list-item"><a class="navbar__link js-scroll-trigger" href="#workflow">studium</a></li>
@@ -123,7 +121,7 @@
                 </g>
             </svg>
             <div class="greetings__sun-element">
-                <div class="greetings__header color-gradient-on-text">Hello traveler,</div>
+                <div class="greetings__header color-gradient-on-text">hello traveler,</div>
                 <div class="greetings__header color-gradient-on-text">nice to meet you!</div>
             </div>
             </div>
@@ -138,420 +136,44 @@
                 </svg>
             </a>
         </section>
-        <!-- Portfolio Grid-->
-        <section class="page-section section" id="portfolio" data-background-color="#CEDDE0">
-            <div class="container">
-                <div class="text-center">
-                    <!--<h2 class="section-heading">Portfolio</h2>-->
+        <!-- About Me-->
+        <section class="about-me" id="about-me">
+            <div class="about-me__container">
+                <div class="about-me__text-container">
+                    <h1 class="about-me__header">about me</h1>
+                    <ul class="about-me__list">
+                        <li class="about-me__list-item">fresh media informatics guy</li>
+                        <li class="about-me__list-item">in love with running sports</li>
+                        <li class="about-me__list-item">passionate about photography and music</li>
+                    </ul>
                 </div>
-                <div class="row">
-                    <div class="col-12 text-center bg-transparent border-portfolio mb-2 py-2 px-2 ">
-                        <h2 class="roboto-thin">Angular</h2>
-                    </div>
-                    <div class="bright-background pt-4 pb-2 px-4">
-                        <div class="row mb-4">
-                            <div class="col-md-6 white-background">
-                                <div class="my-3 mx-3">
-                                    <p class="font-roboto roboto-thin">In meiner Freizeit habe ich mich mit dem Framework Anguar beschäftigt. Ich habe zwei Udemy-Kurse (ca. 60 Stunden der Theorie und 40 Stunden der praktischen Übungen) abgeschlossen, das gelernte aus diesen Kursen habe ich in einer Webanwendung zur Verwaltung von Notizen praktisch verwendet.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <a class="" href="https://notizen-app-9dc7a.web.app/signin" target="_blank">
-                                    <img class="img-fluid border-radius-12px hover-me" src="assets/img/portfolio/angular01.jpg" alt="" />
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="about-me__image-container">
+                    <img class="about-me__img" src="./assets/img/me.jpg"/>
                 </div>
-                <hr class="my-4">
-                <div class="row">
-                    <div class="col-12 text-center bg-transparent border-portfolio mb-2 mt-4 py-2 px-2 ">
-                        <h2 class="roboto-thin">C# und Game-Design</h2>
-                    </div>
-                    <div class="bright-background-2 pt-4 pb-2 px-4">
-                        <div class="row mb-4">
-                            <div class="col-md-6">
-                                <a class="" href="https://denis-kirst.de/dev/web-game/" target="_blank">
-                                    <img class="img-fluid border-radius-12px hover-me" src="assets/img/portfolio/game01.jpg" alt="" />
-                                </a>
-                            </div>
-                            <div class="col-md-6 white-background">
-                                <div class="my-3 mx-3">
-                                    <p class="font-roboto roboto-thin">Im Rahmen einer Studienarbeit und auch meiner Bachelorarbeit habe ich folgendes Unity-Spiel erstellt. Dieses Jump’n’Run wurde von mir in C# mit Hilfe von Unity programmiert. Die Spiel-Dauer beträgt ca. 1 Minute und 30 Sekunden. Die Steuerung ist ganz einfach: Pfeile zum Rennen und Springen, Leertaste zum Schießen.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr class="my-4">
-            </div>
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading">Portfolio</h2>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 mb-4">
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-search-plus fa-3x"></i></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/01-thumbnail.jpg" alt="" />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Illustrationen</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-4">
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-search-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/07-thumbnail.jpg" alt="" />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Shopware 5</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-4">
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal5">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-search-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/05-thumbnail.jpg" alt="" />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">User-Experience</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-4">
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal6">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-search-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/06-thumbnail.jpg" alt="" />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Fotografie</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-4">
-
-                    </div>
-
-                    <div class="col-lg-4 mb-4">
-
-                    </div>
-                </div>
-            </div>
+            </div>      
         </section>
         <!-- About-->
-        <section class="page-section section" id="about" data-background-color="#C1D6DB">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading">Über mich</h2>
-                </div>
-                <div class="bright-background my-4 mx-4 py-4 px-4">
-                    <div class="row">
-
-                        <div class="offset-lg-2 col-lg-8">
-                            <div class="team-member">
-                                <!--
-                                <img class="mx-auto rounded-circle" src="assets/img/profile.jpg" alt="" />
-                                -->
-                                <h4>Denis Kirst</h4>
-                                <p class="">Medieninformatik B.Sc.</p>
-
-                                <a class="btn btn-dark btn-social mx-2" href="https://www.xing.com/profile/Denis_Kirst/" target="_blank"><i class="fab fa-xing"></i></i></a>
-
-                                <a class="btn btn-dark btn-social mx-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="row">
-                        <div class="offset-lg-2 col-lg-8 text-center white-background">
-                            <p class="my-4 mx-4 py-4 px-4">Während des Studiums habe ich mich für Webentwicklung und Game-Design spezialisiert. Mein Praktikum und meine Bachelorarbeit habe ich in den beiden Bereichen abgeschlossen. In meiner Freizeit beschäftige ich mich mit JavaScript Frameworks wie Angular und React.</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+        <section class="page-section section" id="about">
         </section>
         <!-- Skills-->
-        <section class="page-section section" id="skills" data-background-color="#A5C3CE">
-            <div class="container">
-                <div class="row text-center">
-                    <div class="col-lg-8 mx-auto">
-                        <h2 class="section-heading">Skills</h2>
-                        <h3 class="section-subheading">Da ich in der Webentwicklung tätig sein will, liste ich hier nur die relevanten Skills für die Webentwicklung auf. Ich erweitere stets meine Kenntnisse, deshalb wird sich dieser Abschnitt ständig verändern</h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4">
-                        <ul class="fa-ul mb-5 text-center">
-                            <li>
-                                <i class="fab fa-html5 fa-4x mb-3 mr-5"></i>
-                            </li>
-                            <li>
-                                <i class="fab fa-css3-alt fa-4x mb-3 mr-5"></i>
-                            </li>
-                            <li>
-                                <i class="fab fa-js-square fa-4x mb-3 mr-5"></i>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-4">
-                            <ul class="fa-ul mb-5 text-center">
-                                <li>
-                                    <i class="fab fa-php fa-4x mb-3 mr-5"></i>
-                                </li>
-                                <li>
-                                    <i class="fab fa-shopware fa-4x mb-3 mr-5"></i>
-                                </li>
-                                <li>
-                                    <i class="fab fa-angular fa-4x mb-3 mr-5"></i>
-                                </li>
-                            </ul>
-                    </div>
-                    <div class="col-lg-4">
-                        <ul class="fa-ul mb-5 text-center">
-                            <li>
-                                <i class="fab fa-react fa-4x mb-3 mr-5"></i>
-                            </li>
-                            <li>
-                                <i class="fab fa-less fa-4x mb-3 mr-5"></i>
-                            </li>
-                            <li>
-                                <i class="fab fa-sass fa-4x mb-3 mr-5"></i>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
+        <section class="page-section section" id="skills">
         </section>
         <!-- Studium -->
-        <section class="page-section section" id="workflow" data-background-color="#E4ECED">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading second-section-heading">Studium</h2>
-                    <h3 class="section-subheading">Vom Konzept über Design bis zur Umsetzung</h3>
-                </div>
-                <div class="row text-center">
-                    <div class="col-12 mb-3">
-                        <div class="background-with-opacity">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img class="image-fluid img-workflow" src="./assets/img/idea.svg">
-                                    <h4 class="my-3">Konzept</h4>
-                                </div>
-                                <div class="col-md-9 mt-4 text-left">
-                                    <p class="font-roboto">Eine Idee ist der Grundstein einer Webseite, jedoch die Konzeption einer Webseite ist genau so ein sehr wichtiger Schritt. Eine Webseite hat nicht nur informative Inhalte. Sie muss auch positive Emotionen in ihrer Zielgruppe auslösen. Zum Abschluss der Konzeption kommen solche Aspekte des UX Designs wie UI Design, Informationsarchitektur, Interaktionsdesign und Usability.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 mb-3">
-                        <div class="background-with-opacity">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img class="image-fluid img-workflow" src="./assets/img/design.svg">
-                                    <h4 class="my-3">Design</h4>
-                                </div>
-                                <div class="col-md-9 mt-4 text-left">
-                                    <p class="font-roboto">Das Design einer Webseite ist ein Leitpfaden für die spätere Entwicklung. Denn ohne Design treibt die Entwicklung Freestyle und der Kunde hofft auf das beste. Das Design zeigt die  pixelgenaue Darstellung, wie das fertige Produkt aussehen soll. Egal ob in der Desktop-Ansicht oder in der Smartphone-Ansicht, beides muss funktionieren.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 mb-3">
-                        <div class="background-with-opacity height-700">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img class="image-fluid img-workflow" src="./assets/img/development.svg">
-                                    <h4 class="my-3">Umsetzung</h4>
-                                </div>
-                                <div class="col-md-9 mt-4 text-left">
-                                    <p class="font-roboto">Die Umsetzung des Designs in den Code ist der letzte und der entscheidende Punkt. Die Programmierarbeit muss der Vorlage pixelgenau entsprechen. Die Arbeit mit dem Code und dem Design verschafft dem Medieninformatiker Einblicke in die beiden Seiten der Entstehung einer Webseite oder einer Webapplikation. Medieninformatiker wissen, was als Inhalt funktionieren wird und was nicht.</p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <section class="page-section section" id="workflow">
         </section>
         <!-- Contact-->
-        <section class="page-section section" id="contact" data-background-color="#789CAA">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading">Kontaktieren Sie mich</h2>
-
-                </div>
-                <form id="contactForm" name="sentMessage" novalidate="novalidate">
-                    <div class="row align-items-stretch mb-5">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input class="form-control input-custom" id="name" type="text" placeholder="Ihr Name *" required="required" data-validation-required-message="Bitte geben Sie Ihren Namen ein." />
-                                <p class="help-block text-danger"></p>
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control input-custom" id="email" type="email" placeholder="Ihre Email-Adresse *" required="required" data-validation-required-message="Bitte geben Sie Ihre Email-Adresse ein." />
-                                <p class="help-block text-danger"></p>
-                            </div>
-                            <div class="form-group mb-md-0">
-                                <input class="form-control input-custom" id="phone" type="tel" placeholder="Ihre Telefonnummer *" required="required" data-validation-required-message="Bitte geben Sie Ihre Telefonnummer ein." />
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group form-group-textarea mb-md-0">
-                                <textarea class="form-control input-custom-text-area" id="message" placeholder="Ihre Nachricht *" required="required" data-validation-required-message="Bitte geben Sie Ihre Nachricht ein."></textarea>
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        <div id="success"></div>
-                        <button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit">Senden</button>
-                    </div>
-                </form>
-            </div>
+        <section class="page-section section" id="contact">
         </section>
         <!-- Footer-->
         <footer class="footer py-4">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-4 text-lg-left">Copyright © Denis Kirst 2020</div>
-                    <div class="col-lg-4 my-3 my-lg-0">
-                    </div>
-                    <div class="col-lg-4 text-lg-right">
-                    </div>
-                </div>
-            </div>
         </footer>
-        <!-- Portfolio Modals-->
-        <!-- Modal 1-->
-        <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project Details Go Here-->
-                                    <h2 class="">Grundlagen der Gestaltung</h2>
-                                    <p class="item-intro">Einige Auszüge aus der Studienarbeit</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/hase.jpg" alt="" />
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/poster.jpg" alt="" />
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/teekochen.jpg" alt="" />
-                                    <button class="btn btn-primary" data-dismiss="modal" type="button">
-                                        <i class="fas fa-times mr-1"></i>
-                                        Schließen
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Modal 4-->
-        <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project Details Go Here-->
-                                    <h2 class="">Shopware 5 Projekte</h2>
-                                    <p class="item-intro">Während meiner Praktikumszeit habe ich an zwei großen Shopware-5-Projekten mitgearbeitet. Zu meinen Aufgaben zählten die Erstellung der Themes und einiger Funktionen im Shop, auch die Recherche und Installation der Plug-Ins</p>
-                                    <div class="subheading mb-3"><a href="https://digital-signage.oechsle.de/" target="_blank">Hier</a> geht es zum Shop, an dem ich mitgewirkt habe</div>
-                                    <button class="btn btn-primary" data-dismiss="modal" type="button">
-                                        <i class="fas fa-times mr-1"></i>
-                                        Schließen
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Modal 5-->
-        <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project Details Go Here-->
-                                    <h2 class="">UX/UI-Design</h2>
-                                    <p class="item-intro">Prototyp einer App für Vegetarier</p>
-                                    <div class="subheading mb-3">Hier geht es zum <a href="prototyp/index.html" target="_blank"> Prototyp </a></div>
-                                    <button class="btn btn-primary" data-dismiss="modal" type="button">
-                                        <i class="fas fa-times mr-1"></i>
-                                        Schließen
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Modal 6-->
-        <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project Details Go Here-->
-                                    <h2 class="">Fotografie</h2>
-                                    <p class="item-intro">Ich fotografiere gerne in meiner Freizeit, auf meinem Instagram-Account können Sie einige Bilder von mir ansehehn</p>
-                                    <div class="subheading mb-3">Hier geht es zum <a href="https://www.instagram.com/naked.astronaut/" target="_blank"> Instagram-Account</a></div>
-                                    <button class="btn btn-primary" data-dismiss="modal" type="button">
-                                        <i class="fas fa-times mr-1"></i>
-                                        Schließen
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Bootstrap core JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
         <!-- Third party plugin JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-        <!-- inView-->
-        <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/2542/in-view.min.js"></script>
-        <!-- Contact form JS-->
-        <script src="assets/mail/jqBootstrapValidation.js"></script>
-        <script src="assets/mail/contact_me.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
 
         <script src="./js/progress-bar.js"></script>
-        <script src="./js/font-awesome/all.js"></script>
     </body>
 </html>

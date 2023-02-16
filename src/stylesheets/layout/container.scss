@@ -1,6 +1,6 @@
 @use "../base/variables.scss" as *;
 
-.container-navbar {
+.container {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -11,5 +11,23 @@
   /** 1200px oder schmaler */
   @media (max-width: $breakpoint-lg) {
     width: 75rem;
+  }
+}
+
+.about-me__container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 120rem;
+  margin: 0 auto;
+  height: 100%;
+  @media (max-width: $breakpoint-lg) {
+    width: 73rem;
+  }
+  @media (max-width: $breakpoint-sm) {
+    justify-content: center;
+    width: 100%;
   }
 }
