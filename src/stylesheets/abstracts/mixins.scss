@@ -5,3 +5,8 @@
   background-clip: text;
   -webkit-background-clip: text;
 }
+
+@mixin vw-100-vh-100() {
+  width: 100vw;
+  height: 100vh;
+}
