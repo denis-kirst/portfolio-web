@@ -4,12 +4,14 @@ import {
   ref,
   set,
   push,
+  child,
   get,
 } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 import {
   getAuth,
   signInAnonymously,
 } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+import { firebaseConfig, ACTIVE_ELEM_SELECTOR } from "./js/variables.js";
 import { Member } from "./js/scrollerModule.js";
 import {
   updateProgress,
@@ -18,21 +20,9 @@ import {
   widthHandler,
 } from "./js/functionsModule.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDrZrZKKHfsd0vqQdxtTxj6BCBrtsHqxdE",
-  authDomain: "say-hi-c64d4.firebaseapp.com",
-  databaseURL:
-    "https://say-hi-c64d4-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "say-hi-c64d4",
-  storageBucket: "say-hi-c64d4.appspot.com",
-  messagingSenderId: "968499690915",
-  appId: "1:968499690915:web:c25d55dfa54a530d55ee16",
-};
-
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const database = getDatabase(app);
-
 const new_member = new Member();
 
 // Hi =) I need timestamps to get better with sections of my portfolio
@@ -48,10 +38,8 @@ signInAnonymously(auth)
 
     get(child(dbRef, `users/${new_member.scroller_id}`)).then((snapshot) => {
       if (!snapshot.exists()) {
-        set(
-          ref(database, "users/" + new_member.scroller_id),
-          new_member.getAllProps()
-        );
+        const fb_user_ref = ref(database, "users/" + new_member.scroller_id);
+        set(fb_user_ref, new_member.getAllProps());
       }
     });
   })
@@ -62,7 +50,6 @@ signInAnonymously(auth)
 
 document.addEventListener("DOMContentLoaded", () => {
   init();
-  const ACTIVE_ELEM_SELECTOR = "a.active";
 
   const navbar_expand_elem = document.getElementById("navbar-expand-button");
 
