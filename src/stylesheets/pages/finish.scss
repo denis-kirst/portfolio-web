@@ -1,0 +1,4 @@
+@use "../abstracts/mixins.scss" as *;
+.finish {
+  @include vw-100-vh-100;
+}
