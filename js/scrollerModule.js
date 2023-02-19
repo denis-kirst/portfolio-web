@@ -58,16 +58,16 @@ class Member {
 
   /**
    *
-   * @returns {Object} everything for localStorage
+   * @returns everything for localStorage
    */
   getAllProps() {
-    const all = {};
-    all.scroller_id = this._scroller_id;
-    all.scroller_name = this._scroller_name;
-    all.scroll_quest_completed = this._scroll_quest_completed;
-    all.member = this._member;
-    all.timestamps = this._timestamps;
-    return all;
+    return {
+      scroller_id: this._scroller_id,
+      scroller_name: this._scroller_name,
+      scroll_quest_completed: this._scroll_quest_completed,
+      member: this._member,
+      timestamps: this._timestamps,
+    };
   }
 
   /**
