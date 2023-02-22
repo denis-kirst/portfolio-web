@@ -2,6 +2,8 @@ const EXPANDED_CLASS = "navbar--expanded";
 const SM_SCREEN_WIDTH = 768;
 const CLASS_ACTIVE = "active";
 const TRANSFORMED_CLASS = "close--transformed";
+const EXPANDED = "navbar__list--expanded";
+const LI_ITEM_ACTIVE_CLASS = "about-me__list-item--active";
 
 const nav_elem = document.getElementById("navbar-elem");
 const li_elems = document.querySelectorAll("li.navbar__list-item");
@@ -10,7 +12,9 @@ const ul_elem = document.getElementById("navbar-list-items");
 const sections = document.querySelectorAll("section");
 const body_elem = document.getElementById("page-top");
 const icon_elem = document.getElementById("close-icon");
-const EXPANDED = "navbar__list--expanded";
+const navbar_link_elems = document.querySelectorAll("a.navbar__link");
+const about_me_ul_elem = document.getElementById("about-me-list");
+const about_me_img_elem = document.getElementById("about-me-img");
 
 /**
  * Calculate and update progress bar
@@ -32,15 +36,17 @@ export function scrollHandler() {
   const MIN = Math.min(...distances.filter((num) => num > 0));
 
   for (const i in distances) {
-    const current_elem = ul_elem.children[i].firstChild;
     if (
       distances[i] === MIN &&
-      !current_elem.classList.contains(CLASS_ACTIVE)
+      !navbar_link_elems[i].classList.contains(CLASS_ACTIVE)
     ) {
-      current_elem.classList.add(CLASS_ACTIVE);
+      navbar_link_elems[i].classList.add(CLASS_ACTIVE);
     }
-    if (distances[i] !== MIN && current_elem.classList.contains(CLASS_ACTIVE)) {
-      current_elem.classList.remove(CLASS_ACTIVE);
+    if (
+      distances[i] !== MIN &&
+      navbar_link_elems[i].classList.contains(CLASS_ACTIVE)
+    ) {
+      navbar_link_elems[i].classList.remove(CLASS_ACTIVE);
     }
   }
   navbarExpandOnScrollHandler();
@@ -122,4 +128,36 @@ function expandNavbar() {
   nav_elem.classList.add(EXPANDED_CLASS);
   nav_elem.style.top = "0";
   icon_elem.classList.remove(TRANSFORMED_CLASS);
+}
+
+/**
+ * @param {HTMLElement} about_me_li_elem
+ */
+export function handleActiveListItem(about_me_li_elem) {
+  for (const li of about_me_ul_elem.children) {
+    if (about_me_li_elem.className === LI_ITEM_ACTIVE_CLASS) {
+      return;
+    }
+  }
+
+  for (const li of about_me_ul_elem.children) {
+    li.classList.remove(LI_ITEM_ACTIVE_CLASS);
+  }
+
+  about_me_li_elem.classList.add(LI_ITEM_ACTIVE_CLASS);
+
+  switch (about_me_li_elem.getAttribute("id")) {
+    case "list-item-1":
+      about_me_img_elem.src = "./assets/img/li-1.jpg";
+      break;
+    case "list-item-2":
+      about_me_img_elem.src = "./assets/img/li-2.jpg";
+      break;
+    case "list-item-3":
+      about_me_img_elem.src = "./assets/img/li-3.jpg";
+      break;
+    case "list-item-4":
+      about_me_img_elem.src = "./assets/img/li-4.jpg";
+      break;
+  }
 }

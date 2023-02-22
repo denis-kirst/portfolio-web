@@ -18,6 +18,7 @@ import {
   scrollHandler,
   expandNavbarOnClick,
   widthHandler,
+  handleActiveListItem,
 } from "./js/functionsModule.js";
 
 const app = initializeApp(firebaseConfig);
@@ -52,12 +53,21 @@ document.addEventListener("DOMContentLoaded", () => {
   init();
 
   const navbar_expand_elem = document.getElementById("navbar-expand-button");
+  const about_me_list_item_elems = document.querySelectorAll(
+    "li.about-me__list-item"
+  );
 
   let current = document.querySelector(ACTIVE_ELEM_SELECTOR);
 
   window.addEventListener("resize", () => {
     widthHandler();
   });
+
+  about_me_list_item_elems.forEach((li) =>
+    li.addEventListener("click", (event) => {
+      handleActiveListItem(event.target);
+    })
+  );
 
   navbar_expand_elem.addEventListener("click", () => {
     expandNavbarOnClick();

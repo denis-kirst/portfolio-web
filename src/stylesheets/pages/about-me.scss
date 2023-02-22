@@ -3,9 +3,21 @@
 
 .about-me {
   @include vw-100-vh-100;
+  background: linear-gradient(
+    90deg,
+    rgba(251, 215, 134, 0.8) 65%,
+    rgba(74, 164, 197, 0.45) 35%
+  );
+  @media (max-width: $breakpoint-lg) {
+    background: linear-gradient(
+      90deg,
+      rgba(251, 215, 134, 0.8) 0%,
+      rgba(74, 164, 197, 0.45) 100%
+    );
+  }
   .about-me__text-container {
-    width: 60%;
-    padding-left: 1.5rem;
+    width: 50%;
+    position: relative;
     @media (max-width: $breakpoint-sm) {
       width: 75%;
       margin: 1rem auto;
@@ -14,11 +26,22 @@
       margin: 0.25rem auto;
     }
     .about-me__header {
-      font-size: 4rem;
+      font-size: 9rem;
+      line-height: 7rem;
+      padding-left: 1.5rem;
+      margin: 0;
       @include color-gradient-on-text;
+      @media (max-width: $breakpoint-lg) {
+        font-size: 6rem;
+        line-height: 5rem;
+      }
       @media (max-width: $breakpoint-sm) {
         font-size: 5rem;
+        padding-left: 0;
         text-align: center;
+        br {
+          display: none;
+        }
       }
       @media (max-width: $breakpoint-xs) {
         font-size: 3.75rem;
@@ -26,36 +49,102 @@
     }
     .about-me__list {
       padding-left: 0;
-      margin-left: 2rem;
+      margin: 5rem 0;
       list-style: none;
+      margin-left: 10%;
+      @media (max-width: $breakpoint-lg) {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+      }
       @media (max-width: $breakpoint-sm) {
         margin-left: 0;
       }
       .about-me__list-item {
-        font-size: 2rem;
+        font-size: 2.25rem;
         position: relative;
+        padding: 1.25rem 0 1.25rem 1rem;
+        margin: 0.75rem 0;
+        font-weight: 500;
+        border-radius: 0.5rem;
+        color: rgb(83, 83, 83);
+        z-index: 2;
+        @media (max-width: $breakpoint-lg) {
+          margin: 0;
+        }
+        &:nth-child(1)::after,
+        &:nth-child(2)::after,
+        &:nth-child(3)::after,
+        &:nth-child(4)::after {
+          content: "";
+          position: absolute;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          top: 0;
+          left: -10%;
+          width: 90%;
+          height: 100%;
+          border-radius: 0.5rem;
+          z-index: -1;
+          @media (max-width: $breakpoint-lg) {
+            width: 100%;
+          }
+          @media (max-width: $breakpoint-sm) {
+          }
+        }
+        &:hover {
+          &:nth-child(1)::after,
+          &:nth-child(2)::after,
+          &:nth-child(3)::after,
+          &:nth-child(4)::after {
+            background-color: rgba(255, 0, 153, 0.2);
+          }
+        }
+        &--active {
+          &:nth-child(1)::after,
+          &:nth-child(2)::after,
+          &:nth-child(3)::after,
+          &:nth-child(4)::after {
+            background-color: rgba(74, 164, 197, 0.3);
+          }
+        }
+
         &::before {
           content: "";
           position: absolute;
           top: 1.2em;
-          left: -30px;
-          margin-top: -0.9em;
-          background: rgba(251, 215, 134, 0.8);
-          height: 12px;
-          width: 12px;
+          left: -7%;
+          margin-top: -1.25rem;
+          background: rgba(247, 121, 125, 0.8);
+          height: 3rem;
+          width: 3rem;
           border-radius: 50%;
+          @media (max-width: $breakpoint-lg) {
+            height: 1.5rem;
+            width: 1.5rem;
+            left: -5%;
+            margin-top: -0.3rem;
+          }
+          @media (max-width: $breakpoint-xs) {
+            height: 1.1rem;
+            width: 1.1rem;
+            left: -5%;
+            margin-top: 0.1rem;
+          }
         }
+
         @media (max-width: $breakpoint-lg) {
-          font-size: 1.75rem;
+          font-size: 1.5rem;
         }
         @media (max-width: $breakpoint-md) {
           font-size: 1.5rem;
         }
         @media (max-width: $breakpoint-sm) {
-          padding-left: 1rem;
+          padding-left: 1.5rem;
+          font-size: 2rem;
         }
         @media (max-width: $breakpoint-xs) {
-          font-size: 1.25rem;
+          font-size: 1.35rem;
           padding-left: 0.5rem;
         }
       }
@@ -63,15 +152,16 @@
   }
 }
 .about-me__image-container {
-  width: 40%;
+  width: 50%;
   padding-right: 1.5rem;
+
   @media (max-width: $breakpoint-sm) {
-    margin: 3rem;
-    padding: 4rem;
+    padding: 6rem;
     width: 100%;
   }
+
   @media (max-width: $breakpoint-xs) {
-    margin: 0.5rem;
+    padding: 3rem;
   }
 
   .about-me__img {
