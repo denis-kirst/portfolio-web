@@ -29,54 +29,9 @@ export function updateProgress() {
   progress_elem.style.width = `${widthValue}%`;
 }
 
-export function scrollHandler() {
-  const positions = calculatePositions(sections);
-  const distances = calculateDistance(positions);
-
-  const MIN = Math.min(...distances.filter((num) => num > 0));
-
-  for (const i in distances) {
-    if (
-      distances[i] === MIN &&
-      !navbar_link_elems[i].classList.contains(CLASS_ACTIVE)
-    ) {
-      navbar_link_elems[i].classList.add(CLASS_ACTIVE);
-    }
-    if (
-      distances[i] !== MIN &&
-      navbar_link_elems[i].classList.contains(CLASS_ACTIVE)
-    ) {
-      navbar_link_elems[i].classList.remove(CLASS_ACTIVE);
-    }
-  }
-  navbarExpandOnScrollHandler();
-}
-
 /**
- * @param {Array<Number>} positions
- * @returns {Array<Number>}
+ * expand navbar on click small screens
  */
-function calculateDistance(positions) {
-  const SCROLL_WAY = window.scrollY - nav_elem.scrollHeight;
-  const distances = [];
-  for (const position of positions) {
-    distances.push(position - SCROLL_WAY);
-  }
-  return distances;
-}
-
-/**
- * @param {NodeListOf<HTMLElement>} sections
- * @returns {Array<Number>}
- */
-function calculatePositions(sections) {
-  const all_positions = [];
-  for (const section of sections) {
-    all_positions.push(section.offsetTop + section.offsetHeight);
-  }
-  return all_positions;
-}
-
 export function expandNavbarOnClick() {
   if (body_elem.offsetWidth <= SM_SCREEN_WIDTH) {
     if (nav_elem.classList.contains(EXPANDED_CLASS)) {
@@ -87,50 +42,26 @@ export function expandNavbarOnClick() {
   }
 }
 
-function navbarExpandOnScrollHandler() {
-  if (body_elem.offsetWidth > SM_SCREEN_WIDTH) {
-    if (window.scrollY > 80) {
-      expandNavbar();
-      for (const li of li_elems) {
-        li.style.opacity = "0.8";
-      }
-    } else {
-      for (const li of li_elems) {
-        li.style.opacity = "0";
-      }
-      nav_elem.classList.remove(EXPANDED_CLASS);
-    }
-  } else {
-    hideNavbar();
-  }
-}
-
-export function widthHandler() {
-  for (const li of li_elems) {
-    li.style.opacity = "0.8";
-  }
-  if (body_elem.offsetWidth > SM_SCREEN_WIDTH && window.scrollY > 80) {
-    expandNavbar();
-  } else {
-    hideNavbar();
-  }
-}
-
+/**
+ * hide navbar
+ */
 function hideNavbar() {
   ul_elem.classList.remove(EXPANDED);
   nav_elem.classList.remove(EXPANDED_CLASS);
-  nav_elem.style.top = `-${nav_elem.offsetHeight}px`;
   icon_elem.classList.add(TRANSFORMED_CLASS);
 }
 
+/**
+ * expand navbar
+ */
 function expandNavbar() {
   ul_elem.classList.add(EXPANDED);
   nav_elem.classList.add(EXPANDED_CLASS);
-  nav_elem.style.top = "0";
   icon_elem.classList.remove(TRANSFORMED_CLASS);
 }
 
 /**
+ * changing pictures on click: about me section
  * @param {HTMLElement} about_me_li_elem
  */
 export function handleActiveListItem(about_me_li_elem) {
@@ -159,5 +90,109 @@ export function handleActiveListItem(about_me_li_elem) {
     case "list-item-4":
       about_me_img_elem.src = "./assets/img/li-4.jpg";
       break;
+  }
+}
+
+/**
+ * intersection scrolling
+ */
+export function useIntersectionObserver() {
+  const sections = [...document.querySelectorAll("section")];
+
+  let options = {
+    rootMargin: "0px",
+    threshold: 0.75,
+  };
+
+  const callback = (entries, observer) => {
+    entries.forEach((entry) => {
+      const { target } = entry;
+
+      if (entry.intersectionRatio >= 0.75) {
+        target.classList.add("is-visible");
+        addActive(getIndexOfActiveNavItems(target.id));
+        handleNavbarExpantion(target.id);
+      } else {
+        target.classList.remove("is-visible");
+        removeActive(getIndexOfActiveNavItems(target.id));
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(callback, options);
+
+  //data-content attribute for each section with fade-in animation
+  sections.forEach((section, index) => {
+    const sectionChildren = [
+      ...document.querySelector("[data-content]").children,
+    ];
+
+    sectionChildren.forEach((el, index) => {
+      el.style.setProperty("--delay", `${index * 250}ms`);
+    });
+
+    observer.observe(section);
+  });
+}
+
+/**
+ * add "active" class in a list item
+ * @param {number} i
+ */
+function addActive(i) {
+  ul_elem.children[i].firstElementChild.classList.add(CLASS_ACTIVE);
+}
+
+/**
+ * remove "active" class from a list item
+ * @param {number} i
+ */
+function removeActive(i) {
+  ul_elem.children[i].firstElementChild.classList.remove(CLASS_ACTIVE);
+}
+
+/**
+ * get index of the active list item
+ * @param {string} id
+ * @returns {number}
+ */
+function getIndexOfActiveNavItems(id) {
+  let i = 0;
+  switch (id) {
+    case "greetings":
+      i = 0;
+      break;
+    case "about-me":
+      i = 1;
+      break;
+    case "hard-skills":
+      i = 2;
+      break;
+    case "soft-skills":
+      i = 3;
+      break;
+    case "projects":
+      i = 4;
+      break;
+    case "finish":
+      i = 5;
+      break;
+  }
+  return i;
+}
+
+/**
+ * expand navbar on section scroll for large screens
+ * @param {string} id
+ */
+function handleNavbarExpantion(id) {
+  if (body_elem.offsetWidth > SM_SCREEN_WIDTH) {
+    if (id === "greetings" && !nav_elem.classList.contains(EXPANDED_CLASS)) {
+      hideNavbar();
+    } else {
+      expandNavbar();
+    }
+  } else {
+    hideNavbar();
   }
 }
