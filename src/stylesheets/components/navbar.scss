@@ -9,8 +9,6 @@
   @media (max-width: $breakpoint-sm) {
     display: block;
   }
-  &:hover {
-  }
   &::after,
   &::before {
     position: absolute;
@@ -59,19 +57,21 @@
   z-index: 5;
   padding-top: 1rem;
   filter: blur(0.5rem);
+  transform: translate(0, -100%);
+  transition: background-color 1s ease-in-out, filter 1s ease-in-out,
+    transform 1s ease-in-out;
   @media (max-width: $breakpoint-sm) {
     padding-top: 1rem;
   }
-  transition: padding 1s ease-in-out, background-color 1s linear,
-    filter 1s ease-in-out;
-  &.navbar--expanded {
+  &--expanded {
     padding: 1.75rem 0;
     background-color: rgba(39, 72, 85, 0.9);
+    transform: translate(0, 0);
     filter: blur(0);
+    transition: background-color 1s ease-in-out, filter 1s ease-in-out,
+      transform 1s ease-in-out;
     @media (max-width: $breakpoint-sm) {
       padding: 1rem 0 1rem 0;
-      transition: background-color 1s ease-in-out, top 1.5s ease-in-out,
-        filter 0.75s ease-in-out;
     }
   }
   #progress-bar {
@@ -97,6 +97,7 @@
     align-items: center;
     list-style: none;
     margin: 0;
+    padding: 0;
     position: relative;
     @media (max-width: $breakpoint-sm) {
       display: none;
@@ -108,12 +109,9 @@
       }
     }
     .navbar__list-item {
-      opacity: 0;
+      opacity: 0.8;
       transition: opacity 1.25s;
       display: flex;
-      @media (max-width: $breakpoint-sm) {
-        opacity: 0.8;
-      }
       .navbar__link {
         font-family: "Quicksand";
         font-size: 2rem;
@@ -127,7 +125,7 @@
           padding: 0.2rem;
         }
         @media (max-width: $breakpoint-sm) {
-          padding: 0.5rem 0.5rem 0.5rem 0.75rem;
+          padding: 0.5rem 0.5rem 0.5rem 2.5rem;
           font-size: 2.5rem;
         }
         &::after {
