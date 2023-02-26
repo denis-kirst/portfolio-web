@@ -1,25 +1,25 @@
-const EXPANDED_CLASS = "navbar--expanded";
-const SM_SCREEN_WIDTH = 768;
-const CLASS_ACTIVE = "active";
-const TRANSFORMED_CLASS = "close--transformed";
-const EXPANDED = "navbar__list--expanded";
-const LI_ITEM_ACTIVE_CLASS = "about-me__list-item--active";
-
-const nav_elem = document.getElementById("navbar-elem");
-const li_elems = document.querySelectorAll("li.navbar__list-item");
-const progress_elem = document.getElementById("progress-bar");
-const ul_elem = document.getElementById("navbar-list-items");
-const sections = document.querySelectorAll("section");
-const body_elem = document.getElementById("page-top");
-const icon_elem = document.getElementById("close-icon");
-const navbar_link_elems = document.querySelectorAll("a.navbar__link");
-const about_me_ul_elem = document.getElementById("about-me-list");
-const about_me_img_elem = document.getElementById("about-me-img");
+import { Member } from "./scrollerModule.mjs";
+import {
+  EXPANDED_CLASS,
+  SM_SCREEN_WIDTH,
+  CLASS_ACTIVE,
+  TRANSFORMED_CLASS,
+  EXPANDED,
+  LI_ITEM_ACTIVE_CLASS,
+  nav_elem,
+  progress_elem,
+  ul_elem,
+  body_elem,
+  icon_elem,
+  about_me_ul_elem,
+  about_me_img_elem,
+  nav_link_elems,
+} from "./variables.mjs";
 
 /**
  * Calculate and update progress bar
  */
-export function updateProgress() {
+function updateProgress() {
   const progress = Math.floor(
     (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100
   );
@@ -32,7 +32,7 @@ export function updateProgress() {
 /**
  * expand navbar on click small screens
  */
-export function expandNavbarOnClick() {
+function expandNavbarOnClick() {
   if (body_elem.offsetWidth <= SM_SCREEN_WIDTH) {
     if (nav_elem.classList.contains(EXPANDED_CLASS)) {
       hideNavbar();
@@ -64,7 +64,7 @@ function expandNavbar() {
  * changing pictures on click: about me section
  * @param {HTMLElement} about_me_li_elem
  */
-export function handleActiveListItem(about_me_li_elem) {
+function handleActiveListItem(about_me_li_elem) {
   for (const li of about_me_ul_elem.children) {
     if (about_me_li_elem.className === LI_ITEM_ACTIVE_CLASS) {
       return;
@@ -96,7 +96,7 @@ export function handleActiveListItem(about_me_li_elem) {
 /**
  * intersection scrolling
  */
-export function useIntersectionObserver() {
+function useIntersectionObserver() {
   const sections = [...document.querySelectorAll("section")];
 
   let options = {
@@ -196,3 +196,40 @@ function handleNavbarExpantion(id) {
     hideNavbar();
   }
 }
+
+/**
+ *
+ * @param {Member} member
+ */
+function useObserverForActiveClass(member) {
+  let current;
+
+  const callback = (mutationsList, observer) => {
+    mutationsList.forEach((mutation) => {
+      if (mutation.target.classList.contains("active")) {
+        if (typeof current === "undefined") {
+          current = mutation.target;
+        }
+
+        if (current.textContent !== mutation.target.textContent) {
+          current = mutation.target;
+          member.addTimestamp(current.innerHTML);
+        }
+      }
+    });
+  };
+
+  const mutationObserver = new MutationObserver(callback);
+
+  nav_link_elems.forEach((el) => {
+    mutationObserver.observe(el, { attributes: true });
+  });
+}
+
+export {
+  useIntersectionObserver,
+  handleActiveListItem,
+  expandNavbarOnClick,
+  updateProgress,
+  useObserverForActiveClass,
+};

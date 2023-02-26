@@ -57,7 +57,6 @@ class Member {
   }
 
   /**
-   *
    * @returns everything for localStorage
    */
   getAllProps() {
