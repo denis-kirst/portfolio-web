@@ -2,11 +2,11 @@
 @use "../base/variables.scss" as *;
 
 .about-me {
-  @include vw-100-vh-100;
+  @include set-width-and-height;
   background: linear-gradient(
     90deg,
-    rgba(251, 215, 134, 0.8) 65%,
-    rgba(74, 164, 197, 0.45) 35%
+    rgba(251, 215, 134, 0.8) 10%,
+    rgba(74, 164, 197, 0.45) 90%
   );
   @media (max-width: $breakpoint-lg) {
     background: linear-gradient(

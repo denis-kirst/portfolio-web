@@ -65,7 +65,7 @@
   }
   &--expanded {
     padding: 1.75rem 0;
-    background-color: rgba(39, 72, 85, 0.9);
+    background-color: rgba(39, 72, 85, 0.3);
     transform: translate(0, 0);
     filter: blur(0);
     transition: background-color 1s ease-in-out, filter 1s ease-in-out,

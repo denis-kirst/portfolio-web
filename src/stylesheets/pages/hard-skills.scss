@@ -1,4 +1,4 @@
 @use "../abstracts/mixins.scss" as *;
 .hard-skills {
-  @include vw-100-vh-100;
+  @include set-width-and-height;
 }

@@ -5,7 +5,7 @@
   display: flex;
   justify-content: center;
   &--mountains {
-    @include vw-100-vh-100;
+    @include set-width-and-height;
     overflow: hidden;
     padding: 0;
     position: relative;
