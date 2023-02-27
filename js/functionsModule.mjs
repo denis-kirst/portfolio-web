@@ -1,4 +1,5 @@
 import { Member } from "./scrollerModule.mjs";
+import { AboutMe } from "./aboutMeModel.mjs";
 import {
   EXPANDED_CLASS,
   SM_SCREEN_WIDTH,
@@ -14,6 +15,7 @@ import {
   about_me_ul_elem,
   about_me_img_elem,
   nav_link_elems,
+  about_me_radio_buttons,
 } from "./variables.mjs";
 
 /**
@@ -63,13 +65,14 @@ function expandNavbar() {
 /**
  * changing pictures on click: about me section
  * @param {HTMLElement} about_me_li_elem
+ * @param {AboutMe} about_me
  */
-function handleActiveListItem(about_me_li_elem) {
-  for (const li of about_me_ul_elem.children) {
-    if (about_me_li_elem.className === LI_ITEM_ACTIVE_CLASS) {
-      return;
-    }
+function handleActiveListItem(about_me_li_elem, about_me) {
+  if (about_me_li_elem.className === LI_ITEM_ACTIVE_CLASS) {
+    return;
   }
+
+  const i = getPicIndex(about_me_li_elem.getAttribute("id"));
 
   for (const li of about_me_ul_elem.children) {
     li.classList.remove(LI_ITEM_ACTIVE_CLASS);
@@ -77,20 +80,48 @@ function handleActiveListItem(about_me_li_elem) {
 
   about_me_li_elem.classList.add(LI_ITEM_ACTIVE_CLASS);
 
-  switch (about_me_li_elem.getAttribute("id")) {
-    case "list-item-1":
-      about_me_img_elem.src = "./assets/img/li-1.jpg";
-      break;
-    case "list-item-2":
-      about_me_img_elem.src = "./assets/img/li-2.jpg";
-      break;
-    case "list-item-3":
-      about_me_img_elem.src = "./assets/img/li-3.jpg";
-      break;
-    case "list-item-4":
-      about_me_img_elem.src = "./assets/img/li-4.jpg";
-      break;
+  about_me.current_pic = about_me.getPictureOnIndex(i);
+
+  for (const button of about_me_radio_buttons) {
+    button.checked = false;
   }
+
+  about_me_radio_buttons[i].checked = true;
+}
+
+/**
+ * @param {string} identicator
+ * @returns {number}
+ */
+function getPicIndex(identicator) {
+  switch (identicator) {
+    case "list-item-1":
+      return 1;
+    case "list-item-2":
+      return 2;
+    case "list-item-3":
+      return 3;
+    case "list-item-4":
+      return 4;
+    default:
+      return 0;
+  }
+}
+
+/**
+ * @param {AboutMe} about_me
+ * @param {string} identicator
+ */
+function aboutMeRadioButtonsHandler(about_me, identicator) {
+  const i = getPicIndex(identicator);
+  for (const li of about_me_ul_elem.children) {
+    li.classList.remove(LI_ITEM_ACTIVE_CLASS);
+  }
+  about_me.current_pic = about_me.getPictureOnIndex(i);
+  if (i === 0) {
+    return;
+  }
+  about_me_ul_elem.children[i - 1].classList.add(LI_ITEM_ACTIVE_CLASS);
 }
 
 /**
@@ -232,4 +263,5 @@ export {
   expandNavbarOnClick,
   updateProgress,
   useObserverForActiveClass,
+  aboutMeRadioButtonsHandler,
 };

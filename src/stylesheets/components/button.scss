@@ -1,0 +1,39 @@
+@use "../base/variables.scss" as *;
+
+form {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+label {
+  display: flex;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  input {
+    position: absolute;
+    left: -9999px;
+    &:checked + span {
+      background-color: rgba($color: $pink, $alpha: 0.7);
+    }
+  }
+  span {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 99em;
+    transition: 0.25s ease-in-out;
+    &:hover {
+    }
+    &:before {
+      display: flex;
+      flex-shrink: 0;
+      content: "";
+      background-color: rgba($color: #ffffff, $alpha: 0.85);
+      width: 1.5em;
+      height: 1.5em;
+      border-radius: 50%;
+      transition: 0.25s ease-in-out;
+    }
+  }
+}

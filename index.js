@@ -1,10 +1,12 @@
 import { Member } from "./js/scrollerModule.mjs";
+import { AboutMe } from "./js/aboutMeModel.mjs";
 import {
   updateProgress,
   expandNavbarOnClick,
   handleActiveListItem,
   useIntersectionObserver,
   useObserverForActiveClass,
+  aboutMeRadioButtonsHandler,
 } from "./js/functionsModule.mjs";
 import {
   initFB,
@@ -14,6 +16,8 @@ import {
 import {
   navbar_expand_elem,
   about_me_list_item_elems,
+  about_me_img_elem,
+  about_me_radio_buttons,
 } from "./js/variables.mjs";
 
 const new_member = new Member();
@@ -26,6 +30,8 @@ initFB();
 signInScroller(new_member);
 
 document.addEventListener("DOMContentLoaded", () => {
+  const about_me = new AboutMe(about_me_img_elem.src);
+
   useIntersectionObserver();
   useObserverForActiveClass(new_member);
 
@@ -36,9 +42,19 @@ document.addEventListener("DOMContentLoaded", () => {
     expandNavbarOnClick();
   });
 
+  about_me_radio_buttons.forEach((el) => {
+    el.addEventListener("change", (event) => {
+      aboutMeRadioButtonsHandler(about_me, event.target.value);
+    });
+  });
+
+  about_me.on("new-pic", () => {
+    about_me_img_elem.src = about_me.current_pic;
+  });
+
   about_me_list_item_elems.forEach((li) =>
     li.addEventListener("click", (event) => {
-      handleActiveListItem(event.target);
+      handleActiveListItem(event.target, about_me);
     })
   );
 

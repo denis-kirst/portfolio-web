@@ -28,6 +28,7 @@ const nav_link_elems = document.querySelectorAll("a.navbar__link");
 const about_me_list_item_elems = document.querySelectorAll(
   "li.about-me__list-item"
 );
+const about_me_radio_buttons = document.getElementsByName("about-me-pics");
 
 export {
   ACTIVE_ELEM_SELECTOR,
@@ -48,4 +49,5 @@ export {
   navbar_expand_elem,
   nav_link_elems,
   about_me_list_item_elems,
+  about_me_radio_buttons,
 };
