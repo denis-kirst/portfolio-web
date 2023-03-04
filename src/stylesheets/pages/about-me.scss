@@ -3,6 +3,9 @@
 
 .about-me {
   @include set-width-and-height;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: linear-gradient(
     90deg,
     rgba(251, 215, 134, 0.8) 10%,
@@ -38,6 +41,8 @@
       @media (max-width: $breakpoint-sm) {
         font-size: 5rem;
         padding-left: 0;
+        height: 100%;
+        width: 100%;
         text-align: center;
         br {
           display: none;
@@ -57,7 +62,7 @@
         margin-bottom: 3rem;
       }
       @media (max-width: $breakpoint-sm) {
-        margin-left: 0;
+        margin: 1.25rem 0 1.25rem 2.5rem;
       }
       .about-me__list-item {
         font-size: 2.25rem;
@@ -65,9 +70,9 @@
         padding: 1.25rem 0 1.25rem 1rem;
         margin: 0.75rem 0;
         font-weight: 500;
-        border-radius: 0.5rem;
         color: rgb(83, 83, 83);
         z-index: 2;
+        transition: transform 0.5s ease-in-out;
         @media (max-width: $breakpoint-lg) {
           margin: 0;
         }
@@ -84,7 +89,7 @@
           left: -10%;
           width: 90%;
           height: 100%;
-          border-radius: 0.5rem;
+          border-radius: 1.25rem;
           z-index: -1;
           @media (max-width: $breakpoint-lg) {
             width: 100%;
@@ -96,7 +101,7 @@
           &:nth-child(2)::after,
           &:nth-child(3)::after,
           &:nth-child(4)::after {
-            background-color: rgba($color: $blue, $alpha: 0.3);
+            background-color: rgba($color: $pink, $alpha: 0.07);
           }
         }
 
@@ -106,6 +111,13 @@
           &:nth-child(3)::after,
           &:nth-child(4)::after {
             background-color: rgba($color: $pink, $alpha: 0.2);
+          }
+          &:nth-child(1)::before,
+          &:nth-child(2)::before,
+          &:nth-child(3)::before,
+          &:nth-child(4)::before {
+            transition: transform 0.5s ease-in-out;
+            transform: scale(1.35);
           }
         }
 
@@ -157,12 +169,13 @@
   position: relative;
 
   @media (max-width: $breakpoint-sm) {
-    padding: 6rem;
-    width: 100%;
+    width: 75%;
+    padding-right: 0;
   }
 
   @media (max-width: $breakpoint-xs) {
-    padding: 3rem;
+    width: 100%;
+    padding-right: 0;
   }
 
   .about-me__form-container {
@@ -170,10 +183,16 @@
     left: 50%;
     bottom: 5%;
     transform: translate(-50%);
+    @media (max-width: $breakpoint-sm) {
+      bottom: 87.5%;
+    }
   }
 
   .about-me__img {
     max-width: 100%;
     border-radius: 0.75rem;
+    @media (max-width: $breakpoint-xs) {
+      border-radius: 0;
+    }
   }
 }
