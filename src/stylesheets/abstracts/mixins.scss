@@ -15,5 +15,9 @@
 
 @mixin set-width-and-height() {
   max-width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+
+  @media (max-height: $sm-h) {
+    min-height: $sm-h;
+  }
 }
