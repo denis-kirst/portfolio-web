@@ -43,6 +43,12 @@
       margin-bottom: 7rem;
     }
 
+    @media only screen and (min-width: $ipadpro-width) and (max-height: $ipadpro-height) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
+      width: 80vw;
+      height: 80vw;
+      margin-bottom: 20vw;
+    }
+
     /** 992px oder schmaler */
     @media (max-width: $breakpoint-md) {
       width: 75vw;
