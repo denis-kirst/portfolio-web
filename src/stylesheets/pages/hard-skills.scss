@@ -1,4 +1,41 @@
 @use "../abstracts/mixins.scss" as *;
 .hard-skills {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   @include set-width-and-height;
+
+  background: linear-gradient(
+    90deg,
+    rgb(251, 215, 134, 0.55) 0%,
+    rgba(198, 255, 221, 0.55) 50%,
+    rgba(247, 121, 125, 0.55) 100%
+  );
+
+  .card:nth-child(1) .card__face.card__face2 {
+    background-image: linear-gradient(
+      0deg,
+      rgba(251, 215, 134, 1) 0%,
+      rgba(247, 121, 125, 1) 100%
+    );
+    border-radius: 15px;
+  }
+
+  .card:nth-child(2) .card__face.card__face2 {
+    background-image: linear-gradient(
+      0deg,
+      rgba(198, 255, 221, 1) 0%,
+      rgba(251, 215, 134, 1) 100%
+    );
+    border-radius: 15px;
+  }
+
+  .card:nth-child(3) .card__face.card__face2 {
+    background-image: linear-gradient(
+      0deg,
+      rgba(247, 121, 125, 1) 0%,
+      rgba(198, 255, 221, 1) 100%
+    );
+    border-radius: 15px;
+  }
 }
