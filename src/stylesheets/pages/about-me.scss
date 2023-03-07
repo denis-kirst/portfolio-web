@@ -4,8 +4,8 @@
 .about-me {
   @include set-width-and-height;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   background: linear-gradient(
     90deg,
     rgba(251, 215, 134, 0.8) 10%,
@@ -18,16 +18,12 @@
       rgba(74, 164, 197, 0.45) 100%
     );
   }
-  .about-me__text-container {
-    width: 50%;
-    position: relative;
-    @media (max-width: $breakpoint-sm) {
-      width: 75%;
-      margin: 1rem auto;
-    }
-    @media (max-width: $breakpoint-xs) {
-      margin: 0.25rem auto;
-    }
+  @media (max-width: $breakpoint-xs) {
+    display: block;
+  }
+  .about-me__header-container {
+    width: 100%;
+    padding-bottom: 1rem;
     .about-me__header {
       font-size: 9rem;
       line-height: 7rem;
@@ -44,13 +40,22 @@
         height: 100%;
         width: 100%;
         text-align: center;
-        br {
-          display: none;
-        }
       }
       @media (max-width: $breakpoint-xs) {
         font-size: 3.75rem;
       }
+    }
+  }
+
+  .about-me__text-container {
+    width: 50%;
+    position: relative;
+    @media (max-width: $breakpoint-sm) {
+      width: 75%;
+      margin: 1rem auto;
+    }
+    @media (max-width: $breakpoint-xs) {
+      margin: 0;
     }
     .about-me__list {
       padding-left: 0;
@@ -64,6 +69,9 @@
       @media (max-width: $breakpoint-sm) {
         margin: 1.25rem 0 1.25rem 2.5rem;
       }
+      @media (max-width: $breakpoint-xs) {
+        margin: 1.5rem 0;
+      }
       .about-me__list-item {
         font-size: 2.25rem;
         position: relative;
@@ -76,10 +84,7 @@
         @media (max-width: $breakpoint-lg) {
           margin: 0;
         }
-        &:nth-child(1)::after,
-        &:nth-child(2)::after,
-        &:nth-child(3)::after,
-        &:nth-child(4)::after {
+        &::after {
           content: "";
           position: absolute;
           background-position: center;
@@ -94,28 +99,23 @@
           @media (max-width: $breakpoint-lg) {
             width: 100%;
           }
+          @media (max-width: $breakpoint-xs) {
+            left: -10%;
+            width: 120%;
+          }
         }
 
         &:hover {
-          &:nth-child(1)::after,
-          &:nth-child(2)::after,
-          &:nth-child(3)::after,
-          &:nth-child(4)::after {
+          &::after {
             background-color: rgba($color: $pink, $alpha: 0.07);
           }
         }
 
         &--active {
-          &:nth-child(1)::after,
-          &:nth-child(2)::after,
-          &:nth-child(3)::after,
-          &:nth-child(4)::after {
+          &::after {
             background-color: rgba($color: $pink, $alpha: 0.2);
           }
-          &:nth-child(1)::before,
-          &:nth-child(2)::before,
-          &:nth-child(3)::before,
-          &:nth-child(4)::before {
+          &::before {
             transition: transform 0.5s ease-in-out;
             transform: scale(1.35);
           }
@@ -169,7 +169,7 @@
   position: relative;
 
   @media (max-width: $breakpoint-sm) {
-    width: 65%;
+    width: 55%;
     padding-right: 0;
   }
 
@@ -191,8 +191,9 @@
   .about-me__img {
     max-width: 100%;
     border-radius: 0.75rem;
-    @media (max-width: $breakpoint-xs) {
+    @media (max-width: $breakpoint-sm) {
       border-radius: 0;
+      margin: 1rem 0 3rem 0;
     }
   }
 }

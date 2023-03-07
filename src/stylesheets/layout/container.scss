@@ -26,15 +26,21 @@
     width: 73rem;
   }
   @media (max-width: $breakpoint-sm) {
-    justify-content: space-evenly;
     width: 100%;
   }
 }
 
 .hard-skills__container {
-  max-width: 100vw;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 35px;
-  padding: 40px 0;
+  display: flex;
+  flex-wrap: wrap;
+  width: 120rem;
+  height: 100%;
+  @media (max-width: $breakpoint-lg) {
+    width: 73rem;
+  }
+  @media (max-width: $breakpoint-sm) {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
 }
