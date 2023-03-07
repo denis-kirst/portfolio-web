@@ -96,12 +96,14 @@ function handleActiveListItem(about_me_li_elem, about_me) {
 function getPicIndex(identicator) {
   switch (identicator) {
     case "list-item-1":
-      return 1;
+      return 0;
     case "list-item-2":
-      return 2;
+      return 1;
     case "list-item-3":
-      return 3;
+      return 2;
     case "list-item-4":
+      return 3;
+    case "list-item-5":
       return 4;
     default:
       return 0;
@@ -118,10 +120,8 @@ function aboutMeRadioButtonsHandler(about_me, identicator) {
     li.classList.remove(LI_ITEM_ACTIVE_CLASS);
   }
   about_me.current_pic = about_me.getPictureOnIndex(i);
-  if (i === 0) {
-    return;
-  }
-  about_me_ul_elem.children[i - 1].classList.add(LI_ITEM_ACTIVE_CLASS);
+
+  about_me_ul_elem.children[i].classList.add(LI_ITEM_ACTIVE_CLASS);
 }
 
 /**
