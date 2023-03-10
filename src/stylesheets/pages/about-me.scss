@@ -110,8 +110,7 @@
             background-color: rgba($color: $pink, $alpha: 0.07);
           }
         }
-
-        &--active {
+        &.list-item--active {
           &::after {
             background-color: rgba($color: $pink, $alpha: 0.2);
           }
@@ -120,7 +119,6 @@
             transform: scale(1.35);
           }
         }
-
         &::before {
           content: "";
           position: absolute;

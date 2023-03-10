@@ -11,14 +11,14 @@ export class AboutMe {
       "./assets/img/li-3.jpg",
       "./assets/img/li-4.jpg",
     ];
-    this.current_pic = pic;
+    this.current_content = pic;
   }
 
   /**
    * @param {number} i
    * @returns {string}
    */
-  getPictureOnIndex(i) {
+  getContentOnIndex(i) {
     if (this.pictures.length < i) return "./assets/img/mememe.jpg";
     return this.pictures[i];
   }
@@ -26,15 +26,15 @@ export class AboutMe {
   /**
    * @returns {string}
    */
-  get current_pic() {
-    return this._current_pic;
+  get current_content() {
+    return this._current_content;
   }
 
   /**
    * @param {string}
    */
-  set current_pic(pic) {
-    this._current_pic = pic;
+  set current_content(pic) {
+    this._current_content = pic;
     this.emit("new-pic", pic);
   }
 

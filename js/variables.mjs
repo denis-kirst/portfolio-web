@@ -14,7 +14,7 @@ const SM_SCREEN_WIDTH = 768;
 const CLASS_ACTIVE = "active";
 const TRANSFORMED_CLASS = "close--transformed";
 const EXPANDED = "navbar__list--expanded";
-const LI_ITEM_ACTIVE_CLASS = "about-me__list-item--active";
+const LI_ITEM_ACTIVE_CLASS = "list-item--active";
 
 const nav_elem = document.getElementById("navbar-elem");
 const progress_elem = document.getElementById("progress-bar");
@@ -29,6 +29,13 @@ const about_me_list_item_elems = document.querySelectorAll(
   "li.about-me__list-item"
 );
 const about_me_radio_buttons = document.getElementsByName("about-me-pics");
+const soft_skills_list_item_elems = document.querySelectorAll(
+  "li.soft-skills__list-item"
+);
+const soft_skills_radio_buttons =
+  document.getElementsByName("soft-skills-text");
+const soft_skills_content_elem = document.getElementById("soft-skills-content");
+const soft_skills_ul_elem = document.getElementById("soft-skills-list");
 
 export {
   ACTIVE_ELEM_SELECTOR,
@@ -50,4 +57,8 @@ export {
   nav_link_elems,
   about_me_list_item_elems,
   about_me_radio_buttons,
+  soft_skills_list_item_elems,
+  soft_skills_radio_buttons,
+  soft_skills_content_elem,
+  soft_skills_ul_elem,
 };

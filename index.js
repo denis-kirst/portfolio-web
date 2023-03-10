@@ -1,12 +1,13 @@
 import { Member } from "./js/scrollerModule.mjs";
 import { AboutMe } from "./js/aboutMeModel.mjs";
+import { SoftSkills } from "./js/softSkillsModel.mjs";
 import {
   updateProgress,
   expandNavbarOnClick,
   handleActiveListItem,
   useIntersectionObserver,
   useObserverForActiveClass,
-  aboutMeRadioButtonsHandler,
+  radioButtonsHandler,
 } from "./js/functionsModule.mjs";
 import {
   initFB,
@@ -18,6 +19,9 @@ import {
   about_me_list_item_elems,
   about_me_img_elem,
   about_me_radio_buttons,
+  soft_skills_list_item_elems,
+  soft_skills_radio_buttons,
+  soft_skills_content_elem,
 } from "./js/variables.mjs";
 
 const new_member = new Member();
@@ -31,6 +35,7 @@ signInScroller(new_member);
 
 document.addEventListener("DOMContentLoaded", () => {
   const about_me = new AboutMe(about_me_img_elem.src);
+  const soft_skills = new SoftSkills();
 
   useIntersectionObserver();
   useObserverForActiveClass(new_member);
@@ -44,12 +49,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   about_me_radio_buttons.forEach((el) => {
     el.addEventListener("change", (event) => {
-      aboutMeRadioButtonsHandler(about_me, event.target.value);
+      radioButtonsHandler(about_me, event.target.value);
     });
   });
 
   about_me.on("new-pic", () => {
-    about_me_img_elem.src = about_me.current_pic;
+    about_me_img_elem.src = about_me.current_content;
+  });
+
+  soft_skills.on("new-content", (content) => {
+    soft_skills_content_elem.innerText = content;
   });
 
   about_me_list_item_elems.forEach((li) =>
@@ -57,6 +66,18 @@ document.addEventListener("DOMContentLoaded", () => {
       handleActiveListItem(event.target, about_me);
     })
   );
+
+  soft_skills_list_item_elems.forEach((li) =>
+    li.addEventListener("click", (event) => {
+      handleActiveListItem(event.target, soft_skills);
+    })
+  );
+
+  soft_skills_radio_buttons.forEach((el) => {
+    el.addEventListener("change", (event) => {
+      radioButtonsHandler(soft_skills, event.target.value);
+    });
+  });
 
   new_member.on("add-timestamp", (timestamp) => {
     pushTimestampIntoDB(new_member, timestamp);

@@ -13,10 +13,13 @@ import {
   body_elem,
   icon_elem,
   about_me_ul_elem,
-  about_me_img_elem,
   nav_link_elems,
   about_me_radio_buttons,
+  soft_skills_list_item_elems,
+  soft_skills_radio_buttons,
+  soft_skills_ul_elem,
 } from "./variables.mjs";
+import { SoftSkills } from "./softSkillsModel.mjs";
 
 /**
  * Calculate and update progress bar
@@ -64,36 +67,44 @@ function expandNavbar() {
 
 /**
  * changing pictures on click: about me section
- * @param {HTMLElement} about_me_li_elem
- * @param {AboutMe} about_me
+ * @param {HTMLElement} li_elem
+ * @param {AboutMe | SoftSkills} model
  */
-function handleActiveListItem(about_me_li_elem, about_me) {
-  if (about_me_li_elem.className === LI_ITEM_ACTIVE_CLASS) {
+function handleActiveListItem(li_elem, model) {
+  if (li_elem.className === LI_ITEM_ACTIVE_CLASS) {
     return;
   }
 
-  const i = getPicIndex(about_me_li_elem.getAttribute("id"));
+  const i = getContentIndex(li_elem.getAttribute("id"));
 
-  for (const li of about_me_ul_elem.children) {
-    li.classList.remove(LI_ITEM_ACTIVE_CLASS);
+  if (li_elem.parentElement.id === "about-me-list") {
+    for (const li of about_me_ul_elem.children) {
+      li.classList.remove(LI_ITEM_ACTIVE_CLASS);
+    }
+    for (const button of about_me_radio_buttons) {
+      button.checked = false;
+    }
+    about_me_radio_buttons[i].checked = true;
+  } else {
+    for (const li of soft_skills_list_item_elems) {
+      li.classList.remove(LI_ITEM_ACTIVE_CLASS);
+    }
+    for (const button of soft_skills_radio_buttons) {
+      button.checked = false;
+    }
+    soft_skills_radio_buttons[i].checked = true;
   }
 
-  about_me_li_elem.classList.add(LI_ITEM_ACTIVE_CLASS);
+  li_elem.classList.add(LI_ITEM_ACTIVE_CLASS);
 
-  about_me.current_pic = about_me.getPictureOnIndex(i);
-
-  for (const button of about_me_radio_buttons) {
-    button.checked = false;
-  }
-
-  about_me_radio_buttons[i].checked = true;
+  model.current_content = model.getContentOnIndex(i);
 }
 
 /**
  * @param {string} identicator
  * @returns {number}
  */
-function getPicIndex(identicator) {
+function getContentIndex(identicator) {
   switch (identicator) {
     case "list-item-1":
       return 0;
@@ -111,17 +122,24 @@ function getPicIndex(identicator) {
 }
 
 /**
- * @param {AboutMe} about_me
+ * @param {AboutMe | SoftSkills} model
  * @param {string} identicator
  */
-function aboutMeRadioButtonsHandler(about_me, identicator) {
-  const i = getPicIndex(identicator);
-  for (const li of about_me_ul_elem.children) {
-    li.classList.remove(LI_ITEM_ACTIVE_CLASS);
+function radioButtonsHandler(model, identicator) {
+  const i = getContentIndex(identicator);
+  if (model instanceof AboutMe) {
+    for (const li of about_me_ul_elem.children) {
+      li.classList.remove(LI_ITEM_ACTIVE_CLASS);
+    }
+    about_me_ul_elem.children[i].classList.add(LI_ITEM_ACTIVE_CLASS);
+  } else {
+    for (const li of soft_skills_list_item_elems) {
+      li.classList.remove(LI_ITEM_ACTIVE_CLASS);
+    }
+    soft_skills_list_item_elems[i].classList.add(LI_ITEM_ACTIVE_CLASS);
   }
-  about_me.current_pic = about_me.getPictureOnIndex(i);
 
-  about_me_ul_elem.children[i].classList.add(LI_ITEM_ACTIVE_CLASS);
+  model.current_content = model.getContentOnIndex(i);
 }
 
 /**
@@ -263,5 +281,5 @@ export {
   expandNavbarOnClick,
   updateProgress,
   useObserverForActiveClass,
-  aboutMeRadioButtonsHandler,
+  radioButtonsHandler,
 };

@@ -30,6 +30,22 @@
   }
 }
 
+.soft-skills__container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 120rem;
+  height: 100%;
+  @media (max-width: $breakpoint-lg) {
+    width: 73rem;
+  }
+  @media (max-width: $breakpoint-sm) {
+    width: 100%;
+  }
+}
+
 .hard-skills__container {
   display: flex;
   flex-wrap: wrap;
